@@ -41,4 +41,20 @@ public class ParseRequestInterceptor {
             }
         };
     }
+
+
+//    @Bean
+//    public RequestInterceptor requestTokenBearerInterceptor() {
+//        return (RequestTemplate requestTemplate) -> {
+//            Map<String, Collection<String>> headers = requestTemplate.headers();
+//            if (headers.containsKey("OUT_SERVICE") && headers.get("OUT_SERVICE").contains("out_service")) {
+//                logger.info("Calling outside services for resources");
+//            } else if (headers.containsKey("OUT_SERVICE") && headers.get("OUT_SERVICE").contains("with_sms_auth")) {
+//                requestTemplate.header("Authorization", "Bearer " + SMSAuthConstraints.ACCESS_TOKEN);
+//            } else {
+////                JwtAuthenticationToken token = (JwtAuthenticationToken) SecurityContextHolder.getContext().getAuthentication();
+////                requestTemplate.header("Authorization", "Bearer " + token.getToken().getTokenValue());
+//            }
+//        };
+//    }
 }
