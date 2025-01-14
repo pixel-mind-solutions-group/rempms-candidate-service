@@ -57,6 +57,7 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(
                         request -> request
                                 .requestMatchers("/health/healthChecker").permitAll()
+                                .requestMatchers("/api/candidate/v1/save").permitAll()
                                 .requestMatchers("/api/candidate/**").hasAuthority(RolePermissionsConstants.PERMISSION_CANDIDATE_SERVICE)
                                 .anyRequest().authenticated()
                 ).sessionManagement(ses -> ses.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

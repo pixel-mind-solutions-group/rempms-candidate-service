@@ -334,7 +334,7 @@ public class CommonProfileServiceImpl implements CommonProfileService {
         CommonProfileRequestDTO dto = restDraftClientService.findByIdCandidate(idCandidate);
 
         // Find candidate by id
-        Candidate candidate = candidateRepository.findById(dto.getIdCandidate())
+        Candidate candidate = candidateRepository.findByUserAccount(dto.getIdCandidate())
                 .orElseThrow(() -> new RecordNotFoundException("Candidate not exists."));
         candidate.setIdDraft(dto.getId());
         candidate.setIsVerify(Boolean.TRUE);
