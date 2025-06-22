@@ -56,6 +56,7 @@ public class WebSecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(
                         request -> request
+                                .requestMatchers("/actuator/refresh").permitAll()
                                 .requestMatchers("/health/healthChecker").permitAll()
                                 .requestMatchers("/api/candidate/v1/save").permitAll()
                                 .requestMatchers("/api/candidate/**").hasAuthority(RolePermissionsConstants.PERMISSION_CANDIDATE_SERVICE)
