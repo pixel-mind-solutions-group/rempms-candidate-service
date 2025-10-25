@@ -1,10 +1,10 @@
 package com.pdev.rempms.candidateservice.config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pdev.rempms.candidateservice.constants.AuthErrorMessages;
-import com.pdev.rempms.candidateservice.constants.ClaimsConstant;
-import com.pdev.rempms.candidateservice.constants.CommonConstants;
-import com.pdev.rempms.candidateservice.constants.RolePermissionsConstants;
+import com.pdev.rempms.candidateservice.constant.AuthErrorMessages;
+import com.pdev.rempms.candidateservice.constant.ClaimsConstant;
+import com.pdev.rempms.candidateservice.constant.CommonConstants;
+import com.pdev.rempms.candidateservice.constant.RolePermissionsConstants;
 import com.pdev.rempms.candidateservice.exception.UnauthorizedException;
 import com.pdev.rempms.candidateservice.service.rest.kcs.KeyCloakClientService;
 import jakarta.servlet.FilterChain;

@@ -1,6 +1,6 @@
 package com.pdev.rempms.candidateservice.client.kcs;
 
-import com.pdev.rempms.candidateservice.constants.CommonConstants;
+import com.pdev.rempms.candidateservice.constant.CommonConstants;
 import com.pdev.rempms.candidateservice.util.CommonResponse;
 import feign.Headers;
 import org.springframework.cloud.openfeign.FeignClient;

@@ -24,10 +24,12 @@ public interface CommonProfileService {
      * save candidate common profile with jap and BiDirectional relationships
      *
      * @param idCandidate - candidate id
+     * @param email
+     * @param fullName
      * @return - {@link CommonResponse} - save success info.
      * @author @Maleesha99
      */
-    CommonResponse saveUpdateByJPA(Integer idCandidate);
+    CommonResponse saveUpdateByJPA(Integer idCandidate, String email, String fullName);
 
     /**
      * This method is allowed to get candidate profile by candidate id

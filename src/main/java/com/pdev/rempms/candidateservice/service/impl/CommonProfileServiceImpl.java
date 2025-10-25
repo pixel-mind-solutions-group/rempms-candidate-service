@@ -26,6 +26,7 @@ import com.pdev.rempms.candidateservice.dto.document.upload.DocumentUploadRespon
 import com.pdev.rempms.candidateservice.dto.location.LocationInformationRequestDTO;
 import com.pdev.rempms.candidateservice.dto.location.country.CountryDTO;
 import com.pdev.rempms.candidateservice.enums.FolderType;
+import com.pdev.rempms.candidateservice.event.CandidateRegisteredPublisher;
 import com.pdev.rempms.candidateservice.exception.BaseException;
 import com.pdev.rempms.candidateservice.exception.RecordNotFoundException;
 import com.pdev.rempms.candidateservice.mapper.candidate.CandidateMapper;
@@ -102,6 +103,7 @@ public class CommonProfileServiceImpl implements CommonProfileService {
     private final RestCommunicationInfoClientService restCommunicationInfoClientService;
     private final RestDraftClientService restDraftClientService;
     private final RestDocumentClientService restDocumentClientService;
+    private final CandidateRegisteredPublisher candidateRegisteredPublisher;
 
     private final PersonalDetailMapper personalDetailMapper;
     private final ProfessionalExperienceMapper professionalExperienceMapper;
@@ -322,12 +324,14 @@ public class CommonProfileServiceImpl implements CommonProfileService {
      * save candidate common profile with jap and BiDirectional relationships
      *
      * @param idCandidate - common profile candidate id
+     * @param email
+     * @param fullName
      * @return - {@link CommonResponse} - save success info.
      * @author @Maleesha99
      */
     @Override
     @Transactional(propagation = Propagation.REQUIRED, rollbackFor = Exception.class)
-    public CommonResponse saveUpdateByJPA(Integer idCandidate) {
+    public CommonResponse saveUpdateByJPA(Integer idCandidate, String email, String fullName) {
         log.info("CommonProfileServiceImpl -> saveUpdateByJPA() => started!");
 
         // Fetch draft data by draft id
@@ -491,6 +495,10 @@ public class CommonProfileServiceImpl implements CommonProfileService {
                     new CandidateSaveLazyResponseDTO(savedCandidate.getId(), savedCandidate.getCandidateNo()));
             commonResponse.setStatus(HttpStatus.CREATED);
             commonResponse.setMessage("Candidate profile save successful for BiDirectional relationship with jpa.");
+
+            // Publish candidate registered event
+            log.info("Publishing candidate registered event...");
+            candidateRegisteredPublisher.publishCandidateRegisteredEvent(candidate, email, fullName);
 
         } catch (Exception e) {
             commonResponse.setData(null);

@@ -30,10 +30,12 @@ public class CommonProfileController {
      * @author @Maleesha99
      */
     @PostMapping(value = "/saveUpdate")
-    public ResponseEntity<CommonResponse> saveUpdate(@RequestParam(value = "idCandidate") Integer idCandidate) {
+    public ResponseEntity<CommonResponse> saveUpdate(@RequestParam(value = "idCandidate") Integer idCandidate,
+                                                     @RequestParam(value = "email") String email,
+                                                     @RequestParam(value = "fullName") String fullName) {
         log.info("CommonProfileController.saveUpdate() => started.");
 
-        CommonResponse response = commonProfileService.saveUpdateByJPA(idCandidate);
+        CommonResponse response = commonProfileService.saveUpdateByJPA(idCandidate, email, fullName);
 
         log.info("CommonProfileController.saveUpdate() => ended.");
         return new ResponseEntity<>(response, HttpStatus.OK);
