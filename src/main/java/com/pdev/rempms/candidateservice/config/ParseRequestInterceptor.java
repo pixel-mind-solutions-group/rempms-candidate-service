@@ -1,6 +1,6 @@
 package com.pdev.rempms.candidateservice.config;
 
-import com.pdev.rempms.candidateservice.constants.CommonConstants;
+import com.pdev.rempms.candidateservice.constant.CommonConstants;
 import feign.RequestInterceptor;
 import feign.RequestTemplate;
 import lombok.RequiredArgsConstructor;

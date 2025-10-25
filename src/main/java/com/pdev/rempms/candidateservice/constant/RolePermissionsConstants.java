@@ -1,4 +1,4 @@
-package com.pdev.rempms.candidateservice.constants;
+package com.pdev.rempms.candidateservice.constant;
 
 /**
  * @author @maleeshasa
